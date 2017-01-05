@@ -26,17 +26,24 @@ function showLocalMap() {
 	var regionInfixString = calculateRegionInfixString(parseInt($Xcoord.val()), parseInt($Ycoord.val()));
 	var $localMapImage = $('#local-map');
 	var downloadingImage = new Image();
+
 	downloadingImage.onload = function() {
 		$localMapImage.attr("src", this.src);
 
 		var c = document.getElementById("map-canvas");
     	var ctx = c.getContext("2d");
     	var img = downloadingImage; //document.getElementById("local-map");
+    	ctx.strokeStyle = "#000000";
+    	ctx.fillRect(0,0,512,512);
     	ctx.drawImage(img, 0, 0);
     	ctx.strokeStyle = "#FFFFFF";
     	ctx.beginPath();
-    	ctx.arc(parseInt($Xcoord.val()) % 512, parseInt($Ycoord.val()) % 512,20,0,2*Math.PI);
+    	ctx.arc(Math.abs(parseInt($Xcoord.val()) % 512), Math.abs(parseInt($Ycoord.val()) % 512),20,0,2*Math.PI);
     	ctx.stroke();
+	};
+
+	downloadingImage.onerror = function() {
+		$("#region").html('Sorry, that map tile does not exist.');
 	};
 
 	downloadingImage.src = "map/tile." + regionInfixString + ".png";
