@@ -1,1 +1,4 @@
-map_tool/map/*
+map_tool/map/*.html
+map_tool/map/*.css
+map_tool/map/*.png
+
