@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MC Map</title>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+
+	<label for="x-coord">X-Coordinate</label>
+	<input id="x-coord" type="text">
+	</input>
+
+	<label for="y-coord">Y-Coordinate</label>
+	<input id="y-coord" type="text">
+	</input>
+
+	<input id="submit" value="submit" type="button" onclick="showLocalMap()"></input>
+
+	<br/>
+	<span id="region"></span>
+	<br/>
+	<img src="" id="local-map" hidden />
+	<canvas id="map-canvas" width="512" height="512" style="border:1px solid #d3d3d3;">
+	Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+</body>
+</html>
